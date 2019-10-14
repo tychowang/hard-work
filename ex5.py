@@ -1,4 +1,4 @@
-# ex.py more variables and printing format string (格式化字符)
+# ex.py more variables and printing format string (格式化字符) 
 my_name = 'Zed A. shaw'
 my_age = 35
 my_height = 74 #inches
