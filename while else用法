@@ -1,0 +1,25 @@
+# while else:当循环没被break打断时，会走else。只要被break打断，就不执行else的结果了。
+
+"""
+count = 0
+while count<=5:
+    count += 1
+    if count == 3:break #循环被break打断啦
+    print("Loop",count)
+else:
+    print("循环正常执行完成啦")
+print("----out of while loop----")
+
+count = 0
+while count<=5:
+    count += 1
+    if count == 3:pass #语句正常执行完成，没有break打断
+    print("Loop",count)
+else:
+    print("循环正常执行完成啦")
+print("----out of while loop----")
+
+#格式化输出
+%占位符，s字符串，d digit数字
+%%只单纯显示%
+"""
