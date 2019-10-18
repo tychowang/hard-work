@@ -1,0 +1,140 @@
+# 数据类型：
+# int：用于计算 123456789
+# bool：判断 （ture false 用户判断）
+# str：储存少量数据，便于操作。 '二哥' "1234" 'jsbxkj' '张三，李四，王二麻子...'
+# list：可以储存数据上亿。查询简单（循环等）。- [1,2,3,'密码'，'列表']
+# 元祖（只读列表）：可储存很多数据且任何数据，但只读，无法修改：
+#                银行存的钱数不可随意改动，（1，2，3， '第三方'）
+# 字典：{'name':'tycho','age':16},可存储数量级很大的数据，查询速度巨快
+#       字典{'tycho':[],'二哥'：[200,200,200,....]} ,大量关系性数据。键值对
+# 集合；{1,2,,3,'sasn'},集合求交集，并集等。
+
+# 字符串操作
+"""
+s = 'alexwusir'
+
+# 首字母大写：
+s1 = s.capitalize() #s1 和 s 没有任何关系，你对字符串做的任何操作都没有关系
+print(s1)
+
+# 全大写(验证码中)
+s2 = s.upper()
+s21 = s.lower()
+print(s2,s21)
+
+#(验证码不区分大小写)
+'''
+s_str = 'acQE'
+you_input = input('请输入验证码，不区分大小写')
+if s_str.upper() == you_input.upper():
+    print ('输入成功')
+else:
+    print('请重新输入')
+'''
+#大小写翻转：
+s3 = s.swapcase()
+print(s3)
+
+#三个首字母大写
+s ='alex egon wusir'
+s4 = s.title()
+print(s4)
+
+#每个隔开的（特殊字符或者是数字）单词首字母大写
+s ='alex*egon-wusir'
+s41 = s.title()
+print(s41)
+
+#center居中()
+s = 'alexWUsir'
+s5 = s.center(20,'#')
+print(s5)
+
+#补全建\t包括前面的，未满8位补充八位。8-16补到16（al      :al+6个空格）
+s = 'alexWUsir'
+s = 'al\tsir'
+s6 = s.expandtabs()
+print(s6)
+
+#公共方法：(测量长度)
+s='sjkdhdjhakdfhnwakjshdsakhdhdkddksa'
+l = len(s)
+print(l)
+
+#判断字符串的开头
+s = 'alexWUsir'
+s7 = s.startswith('alex') #判断此字符串是不是以Alex开头
+s71 = s.startswith('e',2,5) #判断exWUsir是不是以e为开头
+print(s7)
+print(s71)
+
+#判断有没有w元素 find通过元素找索引，找不到返回=1
+
+s = 'alexWUsir'
+s8 = s.find('WU') #可切片找,且返回第一个元素的索引，找不到，返回-1
+print(s8) #返回是是这个元素对应的索引下标
+print(s8,type(s8)) #看这个字符串是什么类型
+
+
+#通过元素找索引（index）,找不到报错，所以一般用find
+s = 'alexWUsir'
+s81 = s.index('a')
+print(s81,type(s81))
+#stripe（默认删除前后空格）：(让用户输入名字时，用户不小心输入空格：春   哥)
+
+s = ' alexWUsir '
+s9 = s.strip()
+print(s9)
+
+username = input('请输入名字： ').strip()
+if username =='春哥':
+    print('恭喜春哥发财')
+
+
+# stripe（两边） rstripe(从右删，左边不动)lsttipe（从左边删）
+# 删除了百分号和*号
+s = '*al%exWUs ir%' #到a卡住了，所以第一个百分号没删
+s9 = s.strip('%*') #顺序无所谓
+print(s9)
+
+#查看里头的字符
+s = 'alexaa wusirl'
+s10 = s.count(al)  #alexaa wusirl中只有一个al
+print(s10)
+
+#spilt分割!!!(str--转换成list)
+s = ';alex;wusirl;taibai' #以；分割怎么做
+l = s.split('；') #表示以分号分割
+print(l)
+
+#format的三种玩法：格式化输出，
+s1 ='我叫{},今年{},爱好{},再说一下我叫{}'.format('太白',36,'女','太白')
+print(s1)
+s2 ='我叫{0},今年{1},爱好{2},再说一下我叫{0}'.format('太白',36,'girl')
+print(s2)
+s3 ='我叫{name},今年{age},爱好{hobby},再说一下我叫{name}'.format(age=18,name='name',hobby='girl')
+print(s3)
+
+#replace替换，()
+s='我是非常喜欢我家小匆匆的，真的非常爱小匆匆'
+s11=s.replace('小匆匆','小聪聪',1) #1代表前一个
+print(s11)
+
+#是什么组成系列
+name = 'jinxin123'
+print(name.isalnum()) #字符串由字母或者数字组成
+print(name.isalpha()) #字符串只由字母组成
+print(name.isdigit()) #字符串只由数字组成
+
+
+#for in(有限循环)
+s = 'fhdsklfds'  #(可迭代循环的)
+for i in s:
+    print(i)
+
+
+#
+s = 'fdad小黄片hcjh'
+if'小黄片'in s:
+    print('您的评论有敏感词')
+"""
