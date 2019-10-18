@@ -1,0 +1,45 @@
+#一数字类型（加减乘除）int
+#bit_length:转换成二进制最少的数
+"""
+i = 2
+print(i.bit_length())
+'''
+                    bit_length
+1    0000 0001        1
+2    0000 0002        2
+3    000000011        2
+'''
+#bool值  ture or false
+ #数字字符串转换：
+#    int---> str :
+i=1
+s=str(i)
+#    str--->int :(条件：得是数字字符串)
+s = '123e' #语法错误
+i=int(s)
+
+#int转换成bool,只要是0就是false，非0就是ture
+i = 3
+b = bool(i)
+print(b)
+#bool转换成int
+#Ture转化成数字就是1
+#False转换成数字就是0
+#ps:
+while Ture:
+    pass
+while 1：效率高，因为Ture 还要转换成1再计算
+    pass
+
+
+#字符串与bool:
+s="" #转换成bool值就是False，空字符串就是false
+s="0" #非空字符串都是Ture
+
+#
+s  #动态的，前端传到后端的，若什么都没写
+if s:（不必写成s==''了）
+    print('您输入的为空，重新输入')
+else：
+    pass
+"""
