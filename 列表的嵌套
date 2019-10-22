@@ -1,0 +1,28 @@
+#列表的嵌套
+"""
+#找到佩字
+li = ['taibai','吴佩奇','袁浩',['alex','egon',89],23]
+print(li[1][1])
+#找到太白，首字母大写并放回原位
+li = ['taibai','吴佩奇','袁浩',['alex','egon',89],23]
+name = li[0].capitalize()
+print(name)
+li[0] = name
+print(li)
+# 把袁浩换成日天
+li = ['taibai','吴佩奇','袁浩',['alex','egon',89],23]
+li[2] = '日天'
+print(li)
+
+#把袁浩改成袁日天打出来
+li = ['taibai','吴佩奇','袁浩',['alex','egon',89],23]
+print(li[2].replace('浩','日天'))
+#在原有基础上把浩改成日天
+li = ['taibai','吴佩奇','袁浩',['alex','egon',89],23]
+li[2] = li[2].replace('浩','日天')
+print(li)
+#把alex全变成大写再放回原位
+li = ['taibai','吴佩奇','袁浩',['alex','egon',89],23]
+li[3][0] = li[3][0].upper() #里头是不写的
+print(li)
+"""
