@@ -1,0 +1,62 @@
+"""
+#元祖（只读列表，只可查询循环切片，但儿子不能改，孙子(里面的列表里的内容)可以改）
+tu = (1,2,3,'alex',[2,3,4,'taibai'],'egon')
+print(tu[3]) #查alex
+print(tu[0:4]) #切片查alex
+for i in tu : #列表查
+    print(i)
+#把太白改成全大写
+tu = (1,2,3,'alex',[2,3,4,'taibai'],'egon')
+tu[4][3] = tu[4][3].upper()
+print(tu)
+#增加一个sb在列表中
+tu = (1,2,3,'alex',[2,3,4,'taibai'],'egon')
+tu[4].append('sb')
+print(tu)
+#join(可迭代对象操作方法)
+s = 'alex'
+s1 = '_'.join(s) #括号中放可迭代对象（除了数字和bool值）
+print(s1)
+#
+s = 'alex'
+s1 = '+'.join(s) #括号中放可迭代对象（除了数字和bool值）
+print(s1)
+
+# 无缝拼接（将列表中的文字提取出来然后转换成字符串）str--》list  spilt()
+li = ('taibai','alex','wusir','egon','女神',)
+s = ''.join(li)
+print(s) #输出taibaialexwusiregon女神
+
+#range  :按数字排列的顺序列表【1，2，3，4，5，6，7。。。。。。】
+for i in range(0,10):
+    print(i)
+#加上步长：
+for i in range(0,10,2):
+    print(i) #print-02468
+#倒取
+for i in range(10,0,-2):
+    print(i)
+#经典现象
+for i in range(0,10,-1):
+    print(i) #不报错，但什么也不输出
+#
+for i in range(10,-1,-2): #-1是倒叙，-2 是步长
+    print(i)
+
+#循环打印这个列表
+li= [1,2,3,5,'alex',[2,3,4,5,'taibai'],'afds']
+for i in li:
+    if type(i) == list:
+        for k in i:
+            print(k)
+    else:
+        print(i)"""
+
+#另一种方法：
+li= [1,2,3,5,'alex',[2,3,4,5,'taibai'],'afds']
+for i in range(len(li)):
+    if type(li[i]) == list:
+        for j in li[i]:
+            print(j)
+    else:
+        print(li[i])
