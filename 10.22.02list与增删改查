@@ -87,3 +87,36 @@ for i in li:
 #查前两个元素（切片查）
 li = ['taibai','alex','wusir','egon','女神',]
 print(li[0:2])
+
+# 公共方法
+#len：测量长度，列表中有多少个元素
+"""
+li = ['taibai','alex','wusir','egon','女神',]
+l = len(li)
+print(l)
+
+#数一数元素出现几次：
+li = ['taibai','alex','wusir','egon','女神',]
+num = li.count('taibai')
+print(num)
+
+# 我想找到wusir的索引。
+li = ['taibai','alex','wusir','egon','女神',]
+print(li.index('wusir')) #输出2
+
+#列表排序：(最快的排序，sort是正向排序)
+li = [1,5,4,7,6,2,3]
+li.sort()
+print(li)
+"""
+
+#倒序排序
+li = [1,5,4,7,6,2,3]
+li.sort(reverse = True)
+print(li)
+
+# 反转(反着写这列数字)
+li = [1,5,4,7,6,2,3]
+li.reverse()
+print(li)
+
