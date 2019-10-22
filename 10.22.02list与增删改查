@@ -1,0 +1,89 @@
+# 列表 list：每个元素逗号隔开，可放各类型数据（数字，元祖，bool，列表，字典，对象）
+#    有序的，有索引值，有切片，方便取值
+"""
+li = ['alex','[1,2,3]','wusir','egon','女神','taibai']
+# 取alex
+l1 = li[0] #单个取出来就不是列表
+print(l1)
+# 取列表[1,2,3]
+l2 = li[1]
+print(l2)
+# 截取出几个直接就是列表
+l3 = li[0:3]
+print(l3)
+
+#列表增删改查
+
+li = ['alex','[1,2,3]','wusir','egon','女神','taibai']
+#增加：
+#1：在后面追加字符和数字。
+li.append('日天') #在后面追加字符
+li.append(1) #在后面追加数字
+print(li)
+
+#2：持续增加名单（while），输入q停止
+li = ['alex','[1,2,3]','wusir','egon','女神','taibai']
+while 1:
+    username = input ('<<<')
+    if username.strip().upper()=='Q':
+        break
+    else:
+        li.append(username)
+print(li)
+
+#3：将名单随意插入到女神与太白中间，append insert
+li = ['alex','[1,2,3]','wusir','egon','女神','taibai']
+li.insert(5,'春哥')
+print(li)
+
+#4：加到最后，迭代的添加extend(),里面不能用数字，int是不能迭代的。
+li = ['alex','[1,2,3]','wusir','egon','女神','taibai']
+li.extend('二哥') #分解成元素添加，但int是整体不能这么用
+print(li)
+li.extend([6,7,8]) #()要是可迭代的对象
+print(li)
+
+#删
+#1：s.pop()-pop有返回值，直接用print看
+li = ['taibai','alex','wusir','egon','女神',]
+name = li.pop(1) #()中什么都不写，就是默认删最后一个女神
+print(name,li) #返回值
+# 2：按元素删除s.remove()
+li = ['taibai','alex','wusir','egon','女神',]
+li.remove('taibai')
+print(li)
+
+# 3：清空列表
+li = ['taibai','alex','wusir','egon','女神',]
+li.clear()
+print(li)
+
+# 4：删除列表：切片删除，只删除一块
+li = ['taibai','alex','wusir','egon','女神',]
+del li[0:2] #切片去删
+print(li)
+
+#改
+#将taibai改成男神或列表
+li = ['taibai','alex','wusir','egon','女神',]
+li[0] = '男神'
+print(li)
+li[0] = '[1,2,3]'
+print(li)
+li[0:2] = '云姐' #拆分成两个了
+print(li)
+li[0:2] = 'dbjbdkjsdlhslkd' #看结果
+print(li)
+li[0:3] = [1,2,3,'春哥','咸鱼哥']
+print(li)
+"""
+
+#查：
+#查所有元素
+li = ['taibai','alex','wusir','egon','女神',]
+for i in li:
+    print(i)
+
+#查前两个元素（切片查）
+li = ['taibai','alex','wusir','egon','女神',]
+print(li[0:2])
