@@ -1,0 +1,32 @@
+"""
+# 使用while和for循环分别打印字符串s='asdfer'中的每个元素
+#for循环：
+s='asdfer'
+for i in s:
+    print(i)
+
+#while 循环
+s='asdfer'
+index=0
+while 1:
+    print(s[index])
+    index += 1
+    if index ==6:break
+
+
+#实现一个加法计算器：如content=input（'请输入内容：'）
+#如用户输入：5+9或者5+ 9或5 +9，然后进行分割再计算。
+content = input ('>>>').strip()
+index = content.find("+")
+a =int(content[0:index])
+b =int(content[index+1:])
+print(a+b)
+
+#任意输入一串文字：数字，统计出数字的个数。
+s = input("请输入： ")
+count = 0
+for i in s:
+    if i.isdigit():
+        count=count+1
+print(count)
+"""
