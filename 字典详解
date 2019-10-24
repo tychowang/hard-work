@@ -1,0 +1,137 @@
+# 字典：
+#数据类型划分：可变数据类型：
+#不可变数据类型（不可更改可哈希）：元祖，bool，int，str（任何操作都形成了一个新的str，原来的未改。）
+#可变数据类型（不可哈希）：列表，字典，set
+# dick key必须是不可变数据类型，可哈希，
+# value：任意数据类型。
+# dict 优点：可以二分查找去查询
+#           存储大量的关系型数据
+#      特点：无序的  （3.6后好像会排序）
+
+
+"""
+dic = {
+   'name':['大猛','小孟'],                   #列表
+    'py9':[{'num':71,'avg_age':18,},
+            {'num': 71, 'avg_age': 18, },
+            {'num': 71, 'avg_age': 18, },
+           ],                               #列表里面有三个字典
+    True:1,                                 #bool值
+     (1,2,3):'wuyiyi',                      #元祖一个
+     2:'二哥',                               #数字/字符串
+ }                                           #建的大字典
+print(dic)
+
+
+
+#增删改查
+#增：
+#没有键值对，添加
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+dic1['high'] = 185
+print(dic1) #输出{'age': 18, 'name': 'jin', 'sex': 'male', 'high': 185}
+
+#如果有键，则值覆盖
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+dic1['age'] = 16
+print(dic1) #输出{'age': 16, 'name': 'jin', 'sex': 'male'}
+
+ # 有键值对，不做任何改变，没有键值对才添加。
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+dic1.setdefault('weight')
+dic1.setdefault('weight',150)
+print(dic1)
+
+
+#删
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+print(dic1.pop('age'))   # 打印18，有返回值，按键去删除
+print(dic1.pop('二哥',None))# 二哥若存在，就直接删除了，如果不存在，就返回none代表字典里没有二哥
+print(dic1)                 #可设置返回值，比如把这个none设为'无返回值'
+
+# 随机删除 有返回值 元组里面是删除的键值。（没有意义，能拿来干嘛？）
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+print(dic1.popitem())
+print(dic1)
+#打印 返回值：('sex', 'male')    元组里面是删除的键值
+#           {'age': 18, 'name': 'jin'}
+
+#若删除没有的name1会报错
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+del dic1['name']
+print(dic1)
+
+#dic1.clear() #清空字典
+
+#改  update
+#dic1['age'] = 16
+
+dic = {"name":"jin","age":18,"sex":"male"}
+dic2 = {"name":"alex","weight":75}
+dic2.update(dic)  #把dic上的所有键值对更新到dic2中，有的就覆盖，没有的就添加
+print(dic)
+print(dic2)
+
+
+#查
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+print(dic1.keys(),type(dic1.keys()))
+#打印键（列表表现）：dict_keys(['age', 'name', 'sex']) <class 'dict_keys'>
+
+print(dic1.values()) #dict_values([18, 'jin', 'male'])列表中是值
+print(dic1.items())
+#键值：dict_items([('age', 18), ('name', 'jin'), ('sex', 'male')])
+
+#什么都不写，默认打印键
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+for i in dic1:
+    print(i)
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+for i in dic1.keys(): #打印键
+     print(i)
+#打印值
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+for i in dic1.values():
+    print(i)
+
+# a,b = 1,2
+# print(a,b)
+#一行代码转a,b的值：
+a=1
+b=2
+a,b = 2,1
+print(a,b)
+
+
+a,b = [1,2]
+print(a,b) #结果a,b=1,2
+
+#a,b = [1,2,3]
+#print(a,b) #报错
+
+a,b = [1,2],[2,3]
+print(a,b)  #结果ab是[1, 2] [2, 3]
+
+a,b = (1,2)
+print(a,b)
+
+#打印键值对
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+for k,v in dic1.items():  #打印出列表元祖，元祖里头是键值键值键值对
+    print(k,v) #打印结果是键值对
+for i in dic1.items():  #打印出列表元祖，元祖里头是键值键值键值对
+    print(i) #打印结果是有括号的键值对
+
+#打印出对应的值
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+v1 = dic1['name']
+print(v1)
+
+#缺点：报错，无值则报错，尽量不用把
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+v2 = dic1['name1']
+print(v2)
+#若无此键值，则返回打印'没有这个键'
+dic1 = {'age': 18, 'name': 'jin', 'sex': 'male',}
+print(dic1.get('name1','没有这个键'))
+"""
