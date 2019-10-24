@@ -1,0 +1,40 @@
+#dict嵌套
+
+dic = {
+    'name':['alex','wusir','taibai'], #列表
+    'py9':{
+        'time':'1213',
+        'learn_money':19800,
+        'addr':'CBD',
+           },                         #字典
+    'age':21                         #键值对
+}
+
+'''
+dic['age'] = 56    #改年龄
+print(dic['name'])
+
+dic['name'].append('ritian') #name中添加日天这个名字
+
+#l中的wusir如何大写
+l = [1,2,'wusir']  
+l[2] = l[2].upper() 
+
+dic['name'][1] = dic['name'][1].upper() #wusir变成大写
+print(dic)
+
+#py9中添加一个键值对female : 6
+female : 6
+dic['py9']['female'] = 6
+print(dic)
+'''
+
+#随便输入字符串和数字，测试字符串中整数在的个数
+# fhdklah123rfdj12fdjsl3    '       123     12    13'
+info = input('>>>').strip() #>>>代表请输入
+for i in info:#info是不可变的数据类型
+    if i.isalpha(): #如果是字母组成,进入if循环，数字则不会进入循环。
+        info = info.replace(i," ")  #是字母组成就输出空，得到的字符串是'       123     12    13'
+l = info.split()  #分割
+print(len(l))  #
+
