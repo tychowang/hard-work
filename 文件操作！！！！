@@ -1,0 +1,167 @@
+"""
+#1.文件操作（window环境下）
+#    模特主妇护士老师.txt  打开文件需要一个软件，其次需要知道文件的位置
+#     1 文件路径：d:\模特主妇护士老师.txt
+#     2 编码方式（这个文件的编码方式：utf-8，jbk）
+#     3 操作方式：只读，只写，追加，读写，写读...（以什么方式打开）--创建一个txt保存在下载。
+#             以什么编码方式储存的文件，就以什么编码打开进行操作。
+#     4 用python打开文件
+#     5。
+#一：只读
+f = open('d:\模特主妇护士老师.txt',mode='r',encoding='utf-8')
+content=f.read()
+print(content)
+f.close() #操作完了要关了，不然一直占着内存
+
+#打开相同文件夹下的文件的操作：在exercise.py的文件夹下创建的模特主妇护士老师.txt文件。
+#bytes类型--》str  在open里头隐藏的功能
+f = open('模特主妇护士老师.txt',mode='r',encoding='UTF-8')
+content=f.read()
+print(content)
+f.close()
+
+
+# rb ：bytes类型 1.打开非文字类的文件：比如图片 2.上传下载储存一些文件，亲自储存，而不是借助一些软件的时候。
+f = open('模特主妇护士老师.txt',mode='rb',)
+content=f.read()
+print(content)
+f.close()
+
+#二：只写
+#没有此文件创建文件或者有文件在文件中覆盖原文字。
+f = open('log',mode='w',encoding='UTF-8')
+f.write('附件')
+f.close()
+
+# wb是写进去bytes类型，所以encoding就不用写了。
+f = open('log',mode='wb')
+f.write('附近看到类似的纠纷'.encode('utf-8')) #'附近看到类似的纠纷'str转成bytes类型：.encode('utf-8')
+f.close()
+
+#二：追加
+#原理：光标移动到最后以为再给你追加
+f = open('log',mode='a',encoding ='UTF-8')
+f.write('佳琪')  #在原文件内容-附近看到类似的纠纷中加上佳琪两个字
+f.close()
+
+#同上
+f = open('log',mode='ab')
+f.write('佳琪'.encode('utf-8'))
+f.close()
+
+
+#三：读写r+ （以后最常用的）
+#我先读在写
+f = open('log',mode='r+',encoding='UTF-8')
+print(f.read()) #读
+f.write('大猛，小猛') #写
+f.close()
+
+#我先写再读
+f = open('log',mode='r+',encoding='UTF-8')
+f.write('aaa') #写的时候光标在最前面，所以aaa把tyc给占用了（覆盖），所以log中回显示出aaahon9
+print(f.read()) #读 出来的是没有写的那几个hon9，若上面是aaaaaaaaa，则写出来是空，没被占的会写出来
+f.close() #打印出
+
+# bytes类型（非文字的才用，还有传输）的读写
+f = open('log',mode='r+b') #open中含b的，encoding就不用了
+print(f.read())
+f.write('大猛，小孟'.encode('utf-8'))
+f.close()
+
+#w+是读写(涉及到w，都先清除了再把aaa写上去)
+f = open('log',mode='w+',encoding='utf-8')
+f.write('baa')
+f.seek(0) #调光标（什么都可以调），把光标调到0，然后就从第一个b开始读出来
+print(f.read())
+f.close()
+
+#a+追加，所以不能read
+f = open('log',mode='a+',encoding='utf-8')
+f.write('佳琪')
+f.seek(0)
+print(f.read())
+f.close()
+
+
+#r+为例的功能详解
+#1
+f = open('log',mode='r+',encoding='utf-8')
+content = f.read(3)  # 按字符阅读出来-读log文件中的前三个字符（你能看到这段文字的最小单位）（三个字母或三个字）
+print(content)
+f.close()
+
+#2
+f = open('log',mode='r+',encoding='utf-8')
+f.seek(3) #按字节定光标，编码utf-8编码，一个中文三个字节，所以只print出
+    #除了第一个字的其它字。如果log中有你麻痹三个字，会打印出麻痹两个字
+    #但英文一个字母一个字节
+content = f.read()
+print(content)
+f.close()
+
+
+#3 下电影到百分之20断了，怎么继续断点续传，这时候应该知道光标在哪。
+# 断在哪光标在哪然后调到哪儿
+
+f = open('log',mode='a+',encoding='utf-8') #log:佳琪我的男神哦哦
+f.write('佳琪') #此时log是：佳琪我的男神哦哦佳琪
+count=f.tell() #告诉我们光标在哪
+f.seek(count-9) #我们想要读最后三个字"神佳琪"，所以光标往前移动三个中文字符
+print(f.read()) #读出来
+f.close()
+
+#
+f = open('log',mode='r+',encoding='utf-8')
+content = f.read(3)
+print(f.tell())  #告诉你光标在哪个位置，然后seek调到哪个位置
+print(content)
+f.close()
+
+#f.readable()  # 是否可读
+f = open('log',mode='r+',encoding='utf-8')
+line = f.readline()  # 一行一行的读
+print(line)
+f.close()
+#
+f = open('log',mode='r+',encoding='utf-8')
+line = f.readlines()  #  每一行当成列表中的一个元素，添加到list中
+                    #这时候就可以进行循环了
+print(line)
+f.close()
+
+#截取原文件
+f = open('log',mode='r+',encoding='utf-8')
+f.truncate(4) #原文件是ndkahdkdk，然后截取truncate（4），原文件只只剩下ndka
+              #说明是对原文件的一个更改
+f.close()
+
+#在原文件abcdefg中截取cdef
+f = open('log',mode='r+',encoding='utf-8') #log 中是abcdefg
+f.seek(1)#填光标再查一下
+f.truncate(4)
+f.close()
+
+ #注册功能：
+username = input('请输入你要注册的用户名：')
+password = input('请输入你要注册的密码：')
+with open('list_of_info',mode='w',encoding='utf-8') as f:
+    f.write('{}\n{}'.format(username,password))
+print('恭喜您，注册成功')
+lis = []
+i = 0
+while i < 3:
+    usn = input('请输入你的用户名：')
+    pwd = input('请输入你的密码：')
+    with open('list_of_info',mode='r+',encoding='utf-8') as f1:
+        for line in f1:
+            lis.append(line)
+    if usn == lis[0].strip() and pwd == lis[1].strip():
+        print('登录成功')
+        break
+    else:print('账号和密码错误')
+    i+=1
+"""
+
+
+
