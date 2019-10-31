@@ -1,0 +1,19 @@
+
+
+
+"""
+
+
+# 修改文件
+with open('小护士班主任',encoding='utf-8') as f,open('小护士班主任.bak','w',encoding='utf-8') as f2:
+                   #新文件小护士班主任.bak是新建了一个文件然后把星儿改成阿娇
+    for line in f:  #每一行的星儿都改成啊娇
+        if '星儿' in line:  #班主任:星儿
+            line = line.replace('星儿','啊娇')
+        #写文件
+        f2.write(line) #小护士:金老板
+
+import os
+#os.remove('小护士班主任') #删除文件
+os.rename('小护士班主任.bak','小护士班主任haha')  #重命名文件
+"""
