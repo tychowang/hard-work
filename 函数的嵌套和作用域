@@ -1,0 +1,125 @@
+#函数的嵌套和作用域(记住函数定义了要记得调用了才有反应，所有函数要先定义再调用)
+"""
+#函数的嵌套调用
+def max(a,b):
+   return a if a >b else b
+
+def the_max(x,y,z):  #函数里面调函数，就是函数的调用。这个定义的函数调用了上一个函数
+    c=max(x,y,)  #调用了上一个函数
+    return max(c,z)
+
+print(the_max(1,2,3))
+
+#函数的嵌套定义：（内部函数可以使用外部函数的量）
+def outer():
+    def inner():   #定义了函数如果不在下两行进行调用是会消失的，所以不会打印出来。
+        print('inner')
+    inner()   #调用
+outer()   #调用
+
+#三层嵌套：
+def outer():
+    a=1
+    def inner():
+        b=2
+        print(a)  #使用上一层的a=1
+        print('inner')
+        def inner2():
+            print(a,b) #可以使用外一层的a，因为自己没有a
+            print('inner2')
+        inner2()
+    inner()
+outer()
+
+#局部的a不受全局global的影响
+a = 1  #全局的a
+def outer():
+    a = 1 #局部的a,不受global影响的
+    def inner():
+        b = 2
+        print(a)
+        print('inner')
+        def inner2():
+            global a  #声明了一个上面第一层局部变量
+            a += 1   #不可变数据类型的修改
+            print('inner2')
+        inner2()
+    inner()
+    print('**a** : ', a)
+
+
+outer()
+print('全局 ：',a)  #看看全局a是否在全局起作用了
+
+#nonlocal只能用于局部变量，找上层中离当前函数最近一层的局部变量，内部声明来nonlocal的内部函数的变量修改
+#会影响到当前函数最近一层的局部变量
+a = 1  #全局的a
+def outer():
+    a = 1 #
+    def inner():
+        b = 2
+        print(a)
+        print('inner')
+        def inner2():
+            nonlocal a  #来声明一个上层的局部变量，作用范围只到向上离他最近的有a的局部变量
+            #上一层inner里没有，只能再上一层找outer，然后又一个a=1，若没有就只能报错了，因为再上就是全局了
+            a += 1   #不可变数据类型的修改
+            print('inner2')
+        inner2()
+    inner()
+    print('**a** : ', a)
+
+
+outer()
+print('全局 ：',a)  #看看全局a是否在全局起作用了
+
+#nonlocal
+# 对全局无效
+# 对局部 也只是对 最近的 一层 有影响
+a = 0
+def outer():
+    # a = 1
+    def inner():
+        a = 2 #
+        def inner2():
+            nonlocal a
+            print(a)
+        inner2()
+    inner()
+
+outer()
+
+#函数名的本质（指向内存地址的名字）
+def func():
+    print(123)
+
+func()  #函数名就是内存地址
+func2 =func #1func2也指向内存地址了,函数名可以赋值
+func2()
+
+l=[func,func2] #2函数名可以作为容器类型元素
+print(l)
+for i in l:
+    i()
+
+#
+def func():
+    print(123)
+
+def wahaha(f):
+    f()   #调用了f
+
+wahaha(func) #func传给了f，#3函数名可以作为函数的参数或返回值
+
+#123的曾用名func，f，qqxing(4函数名可以作为函数的返回值)
+
+def func():
+    print(123)
+
+def wahaha(f):
+    f()
+    return f #把函数作为返回值返回f
+
+qqxing=wahaha (func)
+qqxing()
+"""
