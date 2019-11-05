@@ -1,0 +1,43 @@
+#闭包:是嵌套函数，且内部函数调用外部函数的变量
+"""
+#1
+def outer():
+    a=1
+    def inner():
+        print(a)  #调用外部的a=1,就是闭包
+    print(inner.__closure__)
+outer()
+
+#2
+def outer():
+    a=1
+    def inner():
+        print(a)
+    return inner()
+inn=outer()
+inn() #在一个 函数外部使用内部的函数
+
+#小爬虫
+# import urllib  #模块
+from urllib.request import urlopen
+# ret = urlopen('http://www.xiaohua100.cn/index.html').read()
+# print(ret)
+# def get_url():
+#     url = 'http://www.xiaohua100.cn/index.html'
+#     ret = urlopen(url).read()
+#     print(ret)
+#
+# get_url()
+
+#
+def get_url():
+    url = 'https://y.qq.com/n/yqq/singer/000Na9me3Pa3A6.html?ADTAG=baiduald'
+    def get():
+        ret = urlopen(url).read()
+        print(ret)
+    return get
+
+get_func = get_url()
+get_func()
+
+"""
