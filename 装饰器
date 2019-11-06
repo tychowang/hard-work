@@ -1,0 +1,124 @@
+"""
+# 三元运算
+a=1
+b=5
+c= a if a>b else b #三元运算 #条件返回ture的结果if 条件 else条件返回false的结果（简化代码）
+print(c)
+
+#写函数，接收两个参数，返回比较大的那个数字。
+def func(a,b):
+    return a if a>b else b
+
+print(func(5,1))
+
+
+# 装饰器形成的过程 : 最简单的装饰器 有返回值的 有一个参数 万能参数
+# 装饰器的作用
+# 原则 ：开放封闭原则
+# 语法糖 ：@
+# 装饰器的固定模式
+
+#不懂技术
+#time函数，等5秒才出现哈哈哈
+import time
+time.sleep(5)  #让程序在执行到这个代码的时候听一会儿
+print('哈哈哈')
+
+#
+import time
+print(time.time()) #19几几到现在的时间过去了多少秒
+
+#计算执行'老板好同事好大家好'的时间
+import time
+def func():
+    start= time.time()
+    print('老板好同事好大家好')
+    time.sleep(0.01)  #让程序睡上一秒，才不会因为时间太少机器检测不出来
+    end=time.time()
+    print(end-start)
+func()
+
+# 装饰器的作用 —— 不想修改函数的调用方式 但是还想在原来的函数前后添加功能
+# timmer就是一个装饰器函数，只是对一个函数 有一些装饰作用
+
+# 原则： 开放封闭原则
+#   开放 ： 对扩展是开放的
+#   封闭 ： 对修改是封闭的
+# 封版
+
+
+#装饰器函数：(time.time():获取当前时间)
+
+import time
+def func():
+    time.sleep(0.01)
+    print('老板好同事好大家好')
+
+def timmer(f):
+    def inner():
+        start = time.time()
+        f()
+        end = time.time()
+        print(end-start)
+    return inner
+
+func=timmer(func)
+func()"""
+
+#装饰带参数函数的装饰器
+# def timmer(f):    #装饰器函数
+#     def inner(*args,**kwargs):
+#         #(1,2) /(1)
+#         start = time.time()
+#         ret = f(*args,**kwargs)  #f(1,2)       #被装饰的函数
+#         end = time.time()
+#         print(end - start)
+#         return ret
+#     return inner
+#
+# @timmer         #语法糖 @装饰器函数名
+# def func(a,b):     #被装饰的函数
+#     time.sleep(0.01)
+#     print('老板好同事好大家好',a,b)
+#     return '新年好'
+#
+# @timmer         #语法糖 @装饰器函数名
+# def func1(a):     #被装饰的函数
+#     time.sleep(0.01)
+#     print('老板好同事好大家好',a)
+#     return '新年好'
+# # func = timmer(func)
+# ret = func(1,2)   #inner()
+# ret = func(1,b = 2)   #inner()
+# print(ret)
+
+# def wrapper(f):    #装饰器函数，f是被装饰的函数
+#     def inner(*args,**kwargs):
+#         '''在被装饰函数之前要做的事'''
+#         ret = f(*args,**kwargs)    #被装饰的函数
+#         '''在被装饰函数之后要做的事'''
+#         return ret
+#     return inner
+#
+# @wrapper         #语法糖 @装饰器函数名
+# def func(a,b):     #被装饰的函数
+#     time.sleep(0.01)
+#     print('老板好同事好大家好',a,b)
+#     return '新年好'
+
+# def wrapper():
+#     def inner():
+#         pass
+#     return inner
+
+def wrapper(func):   #qqxing
+    def inner(*args,**kwargs):
+        ret = func(*args,**kwargs)   #被装饰的函数
+        return ret
+    return inner
+
+@wrapper        #qqxing = wrapper(qqxing)
+def qqxing():
+    print(123)
+
+ret = qqxing()   #inner
