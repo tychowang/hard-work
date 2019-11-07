@@ -1,0 +1,62 @@
+"""
+#装饰器
+
+def wrapper(func): #func=hopliday
+    def inner(*args,**kwargs):
+        print('在被装饰的函数执行之前做的事')
+        ret = func(*args,**kwargs)
+        print('在被装饰的函数执行之后做的事')
+        return  ret
+    return inner
+
+@wrapper    #holiday = wrapper(holiday)
+def holiday(day):
+    print('全体放假%s天'%day)
+    return '好开心'
+
+ret = holiday(3)   #执行holiday实际上执行的是inner
+print(ret)
+
+#打印出
+#在被装饰的函数执行之前做的事
+#全体放假3天
+#在被装饰的函数执行之后做的事
+#好开心
+
+
+#
+def wahaha():
+    '''
+    一个打印哇哈哈的函数
+    :return:
+    '''
+    print('哇哈哈')
+
+print(wahaha.__name__) #查看字符串格式的函数名
+print(wahaha.__doc__) #查看文档的注释
+"""
+
+
+#  装饰器进阶
+from functools import wraps
+def wrapper(func): #func=hopliday
+    @wraps(func)
+    def inner(*args,**kwargs):
+        print('在被装饰的函数执行之前做的事')
+        ret = func(*args,**kwargs)
+        print('在被装饰的函数执行之后做的事')
+        return  ret
+    return inner
+
+@wrapper    #holiday = wrapper(holiday)
+def holiday(day):
+    '''这是一个放假通知'''
+    print('全体放假%s天'%day)
+    return '好开心'
+
+print(holiday.__name__)
+print(holiday.__doc__)
+
+
+ret = holiday(3)   #执行holiday实际上执行的是inner
+print(ret)
